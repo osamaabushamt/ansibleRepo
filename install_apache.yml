@@ -21,7 +21,7 @@
 
 
   - name: start httpd
-    shell: "systemctl start httpd"
+    shell: "systemctl stop httpd"
      # "firewall-cmd --add-port=80/tcp"
     become: True
     become_user: root
