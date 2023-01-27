@@ -21,7 +21,7 @@
 
 
   - name: start httpd
-    shell: "systemctl stop httpd"
+    shell: "systemctl start httpd"
      # "firewall-cmd --add-port=80/tcp"
     become: True
     become_user: root
@@ -30,3 +30,13 @@
     shell: "firewall-cmd --add-port=80/tcp"
     become: True
     become_user: root
+
+  - name: copy default html file for website
+    tags: httpd, apache
+    copy:
+      src: index.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0644
+
